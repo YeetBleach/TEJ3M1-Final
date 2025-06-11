@@ -7,7 +7,7 @@ Joystick_ Joystick;
 const int firstPin =2;
 const int numButtons =12;
 int lastButtonState[numButtons] = {};
-const int debounceDelay = 20;
+const int debounceDelay = 15;
 
 int lastRawState[numButtons] = {};
 unsigned long lastDebounceTime[numButtons] = {};
@@ -32,7 +32,7 @@ void getDebouncedButtons(int* buttonStates){
 
 void setup() {
   for (int i = 2; i < 13; i++) {
-    pinMode(i, INPUT);
+    pinMode(i, INPUT_PULLUP);
   }
   Joystick.begin();
 }
@@ -47,5 +47,5 @@ void loop() {
       lastButtonState[index] = buttonStates[index];
     }
   }
-  delay(50);
+  delay(30);
 }
